@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Best_Planting_Areas_v2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Best_Planting_Areas</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14593,7 +14593,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Identifying-Best-Planting-Areas-Version-2">Identifying Best Planting Areas Version 2<a class="anchor-link" href="#Identifying-Best-Planting-Areas-Version-2">&#182;</a></h1>
+<h1 id="Identifying-Best-Planting-Areas">Identifying Best Planting Areas<a class="anchor-link" href="#Identifying-Best-Planting-Areas">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14604,7 +14604,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>This notebook describes the process to identify best planting areas by eliminating utility setbacks, removing impervious areas, identifying areas with slope &lt;3 degrees and other criteria explained further below.  This is version two.  Removed smoothing focal statistics on Sentinel 1 data as well as the 2nd run on focal statistics for slope. This was done to achieve more granularity to the data. In prior version the focal statistics run on Sentinel 1 and slope generalized the raster data.</p>
+<p>This notebook describes the process to identify best planting areas by eliminating utility setbacks, removing impervious areas, identifying areas with slope &lt;3 degrees and other criteria explained further below.</p>
 
 </div>
 </div>
@@ -14925,7 +14925,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Sentinel-1 data brought in from Living Atlas.  Soil moisture conditions affect radar backscatter (more water = less backscatter = smaller pixel values). Colorized VV was chosen to best characterize soil surfaces. 11 orbital passes from July 8- September 6, 2024 were averaged, representing the backscatter reflectance of the hottest, driest months. Cells 10 X 10 m.  As above, raster data converted from unsigned char integer 0-255 to 0-1 by Boolean operator. Areas with values &lt;=150 are relatively moist compared to areas &gt;150.</p>
+<p>Sentinel-1 data brought in from Living Atlas.  Colorized VV was chosen to characterize turf or grass surfaces. Cells 10 X 10 m.  As above, raster data converted from unsigned char integer 0-255 to 0-1 by Boolean operator. Areas with values &lt;=150 are grass or turf compared to areas &gt;150 which are built up or treed areas due to double-bounce scattering.</p>
 
 </div>
 </div>
@@ -14935,7 +14935,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="c1">#import the spatial extension functionality (OPTIONAL); don&#39;t have to put arcpy.sa in front of all the tools</span>
@@ -14965,7 +14965,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 <span class="c1">#Extract polygons that have a gridcode of &#39;0&#39; or radar&lt;=125</span>
 <span class="c1">#arcpy.analysis.Select(in_features, out_feature_class, {where_clause})</span>
-<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="s2">&quot;Sent1_criteria&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;C:\MedHat_GIS\MedicineHat\MedicineHat2024.gdb\Best_Planting\more_moist&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;gridcode&quot; = 0&#39;</span><span class="p">)</span>
+<span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Select</span><span class="p">(</span><span class="s2">&quot;Sent1_criteria&quot;</span><span class="p">,</span><span class="sa">r</span><span class="s2">&quot;C:\MedHat_GIS\MedicineHat\MedicineHat2024.gdb\Best_Planting\greenspace&quot;</span><span class="p">,</span><span class="s1">&#39;&quot;gridcode&quot; = 0&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14981,7 +14981,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15091,7 +15091,7 @@ done
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="c1">#Set geoprocessing enviroment.</span>
@@ -15101,7 +15101,7 @@ done
 
 <span class="c1">#Use Intersect tool to identify optimal plantings near trails</span>
 <span class="c1">#arcpy.analysis.Intersect(in_features, out_feature_class, {join_attributes}, {cluster_tolerance}, {output_type})</span>
-<span class="n">infeatures</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Planting_Areas&quot;</span><span class="p">,</span><span class="s2">&quot;lessthan3deg&quot;</span><span class="p">,</span><span class="s2">&quot;more_moist&quot;</span><span class="p">,</span><span class="s2">&quot;Trails_20m&quot;</span><span class="p">]</span>
+<span class="n">infeatures</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Planting_Areas&quot;</span><span class="p">,</span><span class="s2">&quot;lessthan3deg&quot;</span><span class="p">,</span><span class="s2">&quot;greenspace&quot;</span><span class="p">,</span><span class="s2">&quot;Trails_20m&quot;</span><span class="p">]</span>
 <span class="n">outfeatures</span><span class="o">=</span> <span class="s2">&quot;Trails_Best&quot;</span>
 <span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Intersect</span><span class="p">(</span><span class="n">infeatures</span><span class="p">,</span><span class="n">outfeatures</span><span class="p">,</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
 </pre></div>
@@ -15119,7 +15119,7 @@ done
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
 
@@ -15140,7 +15140,7 @@ done
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Take the intersection of: planting areas (removing waterbodies, impervious surfaces, utility setbacks, etc.),  &lt;30m of playgrounds, flat areas &lt;=3 degrees slope.  This will identify optimal planting areas near playgrounds. Note: Sentinel 1 moisture readings were not included in filtering as it excluded most playgrounds as they sit in exposed, dry sites that need trees the most.</p>
+<p>Take the intersection of: planting areas (removing waterbodies, impervious surfaces, utility setbacks, etc.),  &lt;30m of playgrounds, flat areas &lt;=3 degrees slope.  This will identify optimal planting areas near playgrounds.</p>
 
 </div>
 </div>
@@ -15209,7 +15209,7 @@ done
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-python"><pre><span></span><span class="c1">#Set geoprocessing enviroment.</span>
@@ -15219,7 +15219,7 @@ done
 
 <span class="c1">#Use Intersect tool to identify optimal plantings near trails</span>
 <span class="c1">#arcpy.analysis.Intersect(in_features, out_feature_class, {join_attributes}, {cluster_tolerance}, {output_type})</span>
-<span class="n">infeatures3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Planting_Areas&quot;</span><span class="p">,</span><span class="s2">&quot;lessthan3deg&quot;</span><span class="p">,</span><span class="s2">&quot;more_moist&quot;</span><span class="p">]</span>
+<span class="n">infeatures3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Planting_Areas&quot;</span><span class="p">,</span><span class="s2">&quot;lessthan3deg&quot;</span><span class="p">,</span><span class="s2">&quot;greenspace&quot;</span><span class="p">]</span>
 <span class="n">outfeatures3</span> <span class="o">=</span> <span class="s2">&quot;Planting_Areas_Best&quot;</span>
 <span class="n">arcpy</span><span class="o">.</span><span class="n">analysis</span><span class="o">.</span><span class="n">Intersect</span><span class="p">(</span><span class="n">infeatures3</span><span class="p">,</span><span class="n">outfeatures3</span><span class="p">,</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
 </pre></div>
@@ -15237,7 +15237,7 @@ done
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
 
 
 
